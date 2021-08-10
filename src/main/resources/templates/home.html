@@ -32,10 +32,10 @@
                             <div class="col-md-6">Data da entrega: <span th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/02/2020</span></div>
                         </div>
 
-                        <div>Produto</div>
+                        <div class="mt-2">Produto</div>
                         <div> <input class="form-control" th:value="${pedido.urlProduto}" value="url do produto" /></div>
 
-                        <div>Descrição</div>
+                        <div class="mt-2">Descrição</div>
                         <div>
                             <textarea class="form-control" th:text="${pedido.descricao}">descrição do pedido</textarea>
                         </div>
