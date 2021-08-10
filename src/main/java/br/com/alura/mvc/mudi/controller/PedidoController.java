@@ -13,25 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("pedido") //mapear todas as requisições (todas as requisições veem para cá)
-public class PedidoControler {
+@RequestMapping("pedido")
+public class PedidoController {
 
     @Autowired
     private PedidoRepository pedidoRepository;
 
     @GetMapping("formulario")
-    public String formulario(RequisicaoNovoPedido requisicao){
+    public String formulario(RequisicaoNovoPedido requisicao) {
         return "pedido/formulario";
     }
 
     @PostMapping("novo")
-    public String novo(@Valid RequisicaoNovoPedido requisicao, BindingResult result){
-        // @Validated = verificando se está valido (@NotNull na controller); BindingResult = retornando o erro
-        if(result.hasErrors()){
+    public String novo(@Valid RequisicaoNovoPedido requisicao, BindingResult result) {
+        if(result.hasErrors()) {
             return "pedido/formulario";
         }
+
         Pedido pedido = requisicao.toPedido();
         pedidoRepository.save(pedido);
+
         return "redirect:/home";
     }
 
