@@ -31,6 +31,5 @@ public class HomeController {
         List<Pedido> pedidos = repository.findByStatus(StatusPedido.ENTREGUE, sort);
         model.addAttribute("pedidos", pedidos);
         return "home";
-        return "home";
     }
 }
