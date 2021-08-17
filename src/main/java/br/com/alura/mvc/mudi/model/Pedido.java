@@ -22,6 +22,9 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
+    @ManyToOne(fetch = FetchType.LAZY) //não listar todos os dados do usuário (e sim só os pedidos), ao fazer o Jpa
+    private User user;
+
     public String getNomeProduto() {
         return nomeProduto;
     }
@@ -78,4 +81,7 @@ public class Pedido {
         this.status = status;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
