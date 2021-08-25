@@ -26,7 +26,7 @@ public class HomeController {
     public String home(Model model, Principal principal) { //Principal = injeta os dados do usuário logado
 
         Sort sort = Sort.by("dataDaEntrega").descending();
-        PageRequest paginacao =  PageRequest.of(0, 10); //paginação
+        PageRequest paginacao =  PageRequest.of(0, 10, sort); //paginação
 
         List<Pedido> pedidos = repository.findByStatus(StatusPedido.ENTREGUE, paginacao);
         model.addAttribute("pedidos", pedidos);
