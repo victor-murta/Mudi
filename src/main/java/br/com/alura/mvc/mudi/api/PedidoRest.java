@@ -15,15 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoRest {
-
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    @GetMapping("aguardando")
+    @GetMapping("/aguardando")
     public List<Pedido> getPedidosAguardandoOfertas(){
         Sort sort = Sort.by("id").descending();
-
-        PageRequest paginacao = PageRequest.of(0, 10);
+        PageRequest paginacao = PageRequest.of(0, 10, sort);
 
         return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, paginacao);
     }
