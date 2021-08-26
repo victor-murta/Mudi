@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -24,6 +25,9 @@ public class Pedido {
 
     @ManyToOne(fetch = FetchType.LAZY) //não listar todos os dados do usuário (e sim só os pedidos), ao fazer o Jpa
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+    private List<Oferta> ofertas;
 
     public String getNomeProduto() {
         return nomeProduto;
