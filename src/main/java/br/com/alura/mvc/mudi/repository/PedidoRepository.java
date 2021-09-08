@@ -14,13 +14,13 @@ import java.util.List;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long > {
     @Cacheable("books")
-    List<Pedido> findByStatus(StatusPedido aguardando, Pageable sort);
+    List<Pedido> findByStatus(StatusPedido status, Pageable sort);
 
-    @Query(" select p from Pedido p join p.user u where u.username = :username")
-    List<Pedido> findAllByUsuario(@Param("username") String username);
+    @Query("select p from Pedido p join p.user u where u.username = :username")
+    List<Pedido> findAllByUsuario(@Param("username")String username);
 
-    @Query("select  p from Pedido p join p.user u where u.username = :username and p.status = :status")
-    List<Pedido> findByStatusEUsuario(StatusPedido status, @Param("username")String username);
+    @Query("select p from Pedido p join p.user u where u.username = :username and p.status = :status")
+    List<Pedido> findByStatusEUsuario(@Param("status")StatusPedido status, @Param("username")String username);
 
     // <Sua entidade (Pedido) , seu tipo de id (Long)>
     //@PersistenceContext //configurando o EntityManager

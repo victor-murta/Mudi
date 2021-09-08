@@ -21,12 +21,18 @@ public class OfertasRest {
     @PostMapping
     public Oferta criaOferta(RequisicaoNovaOferta requisicao){
 
-        Optional<Pedido> pedido = pedidoRepository.findById(requisicao.findById(requisicao.getPedidoId()));
+        Optional<Pedido> pedidoBuscado = pedidoRepository.findById(requisicao.getPedidoId());
 
-        if(!pedido.isPresent()){
+        if(!pedidoBuscado.isPresent()){
             return null;
         }
 
+        Pedido pedido = pedidoBuscado.get();
         Oferta nova = requisicao.toOferta();
+        nova.setPedido(pedido);
+        pedido.getOfertas().add(nova);
+        pedidoRepository.save(pedido);
+
+        return nova;
     }
 }

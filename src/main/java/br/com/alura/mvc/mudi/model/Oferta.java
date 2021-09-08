@@ -30,6 +30,14 @@ public class Oferta {
         return valor;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }

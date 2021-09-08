@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 public class RequisicaoNovoPedido {
 
-    @NotBlank //NotBlank.requisicaoNovoPedido.nomeProduto=não pode estar em branco
+    @NotBlank
     private String nomeProduto;
 
     @NotBlank
@@ -41,6 +41,7 @@ public class RequisicaoNovoPedido {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
     public Pedido toPedido() {
         Pedido pedido = new Pedido();
         pedido.setDescricao(descricao);
@@ -50,5 +51,6 @@ public class RequisicaoNovoPedido {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         return pedido;
     }
+
 
 }

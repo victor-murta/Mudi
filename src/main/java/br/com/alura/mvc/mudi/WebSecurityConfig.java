@@ -51,21 +51,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 //        UserDetails user =
 //                User.builder()
-//                        .username("joao")
-//                        .password(encoder.encode("joao"))
+//                        .username("maria")
+//                        .password(encoder.encode("maria"))
 //                        .roles("ADM")
 //                        .build();
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(encoder);
-                //.withUser(user);
+//                .withUser(user);
     }
 
 
     //authentication
-//    @Bean
-//    @Override
 //    public UserDetailsService userDetailsService(){
 //        UserDetails user =
 //                User.withDefaultPasswordEncoder()

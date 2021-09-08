@@ -4,6 +4,8 @@ import br.com.alura.mvc.mudi.model.Oferta;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class RequisicaoNovaOferta {
@@ -54,6 +56,9 @@ public class RequisicaoNovaOferta {
     public Oferta toOferta(){
         Oferta oferta = new Oferta();
 
+        oferta.setComentario(this.comentatio);
+        oferta.setDataEntrega(LocalDate.parse(this.dataDaEntrega, formatter));
+        oferta.setValor(new BigDecimal(this.valor));
         return null;
     }
 }
